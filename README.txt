@@ -2,6 +2,8 @@ This script is currently set up to run on University of Rhode Island's cluster, 
 The path at line 116 is hardcoded. You will need to change it to your own working directory path. 
 You will also need to download the adapters file and set the path to the adapters at lines 46, 58, 70, and 82.
 
+
+Run the shell script first, the once that has completed, you can run the R script
 This pipeline starts with downloading the data from the SRA, and renaming the data. 
 The transcripts are run through FastQC, trimmed, and assembled.
 The headers of each file are manipulated so it is easier to see which header is from which species. 
