@@ -23,7 +23,7 @@ changed[cols] <- lapply(changed[cols], factorToNumeric)
 changed$species=species
 
 ggplot(changed, aes(x=species, y=`Number of genes`, fill=species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
+  geom_bar(width = 1, stat = "identity", color = "black", show.legend = FALSE) +
   scale_fill_manual(values = mycols) +
   theme_bw()+
   labs(title = "Number of genes")
@@ -35,8 +35,8 @@ num_of_genes
 mycols <- c("#d55e00", "#009E73", "#0072b2", "#f0e442")
 
 ggplot(num_of_genes, aes(x=species, y=`Number of genes in species-specific orthogroups`, fill = species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
-  scale_fill_manual(values = mycols) +
+  geom_bar(width = 1, stat = "identity", color = "black", show.legend = FALSE) +
+  scale_fill_manual(values = mycols)  +
   theme_bw()+
   labs(title = "Number of genes in species specific orthogroups")
 
@@ -47,7 +47,7 @@ num_in_ortho
 mycols <- c("#d55e00", "#009E73", "#0072b2", "#f0e442")
 
 ggplot(num_in_ortho, aes(x=species, y=`Number of genes in orthogroups`, fill = species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
+  geom_bar(width = 1, stat = "identity", color = "black", show.legend = FALSE) +
   scale_fill_manual(values = mycols) +
   theme_bw() +
   labs(title = "Number of genes in orthogroups")
@@ -62,7 +62,7 @@ num_of_spe_spec<- c("#d55e00", "#009E73", "#0072b2", "#f0e442")
 mycols <- c("#d55e00", "#009E73", "#0072b2", "#f0e442")
 
 ggplot(num_unassign, aes(x=species, y=`Number of unassigned genes`, fill = species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
+  geom_bar(width = 1, stat = "identity", color = "black", show.legend = FALSE) +
   scale_fill_manual(values = mycols) + theme_bw() +
   labs(title = "Number of Unassigned genes")
 
@@ -72,24 +72,24 @@ ggplot(num_unassign, aes(x=species, y=`Number of unassigned genes`, fill = speci
 mycols <- c("#d55e00", "#009E73", "#0072b2", "#f0e442")
 
 ggplot(changed, aes(x="", y=`Number of species-specific orthogroups`, fill = species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
+  geom_bar(width = 1, stat = "identity", color = "black", show.legend = FALSE) +
   geom_text(aes(label=`Number of species-specific orthogroups`) , position = position_stack(vjust = 0.5)) +
   coord_polar("y", start = 0)+
   scale_fill_manual(values = mycols) +
   theme_void() +
   labs(title = "Number of species-specific orthogroups")
 
-ggplot(percent_genes_ortho, aes(x="", y=`Percentage of genes in orthogroups`, fill = species)) +
-  geom_bar(width = 1, stat = "identity", color = "black") +
-  coord_polar("y", start = 0)+
-  scale_fill_manual(values = mycols) +
-  theme_void() +
-  labs(title = "Percent of genes in orthogroups")
+#ggplot(percent_genes_ortho, aes(x="", y=`Percentage of genes in orthogroups`, fill = species)) +
+ # geom_bar(width = 1, stat = "identity", color = "black") +
+  #coord_polar("y", start = 0)+
+  #scale_fill_manual(values = mycols) +
+  #theme_void() +
+  #labs(title = "Percent of genes in orthogroups")
 
-percent_unassign_genes <- changed %>% arrange(desc(species)) %>% mutate(lab.ypos = cumsum(`Percentage of unassigned genes` - 0.5*`Percentage of unassigned genes`))
-percent_unassign_genes
+#percent_unassign_genes <- changed %>% arrange(desc(species)) %>% mutate(lab.ypos = cumsum(`Percentage of unassigned genes` - 0.5*`Percentage of unassigned genes`))
+#percent_unassign_genes
 
-mycols <- c("#f0e442", "#009E73", "#0072b2", "#d55e00")
+#mycols <- c("#f0e442", "#009E73", "#0072b2", "#d55e00")
 
 
 ##This is a bad plot
@@ -100,4 +100,3 @@ mycols <- c("#f0e442", "#009E73", "#0072b2", "#d55e00")
   #scale_fill_manual(values = mycols) +
   #theme_void() +
   #labs(title = "Percent of unassigned genes")
-    
